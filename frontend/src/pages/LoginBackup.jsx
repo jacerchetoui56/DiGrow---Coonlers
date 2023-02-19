@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   HStack,
   Heading,
@@ -10,11 +12,12 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
-export default function SignIn() {
-  const { register: signUp } = useAuth();
+export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const {
     handleSubmit,
     register,
@@ -22,7 +25,8 @@ export default function SignIn() {
   } = useForm();
   const submit = async (values) => {
     try {
-      await signUp(values.name, values.email, values.password);
+      await login(values.email, values.password);
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
@@ -39,25 +43,11 @@ export default function SignIn() {
       p={[8, 10]}
     >
       <VStack mb="8" spacing={2} align={["start", "center"]} w="full">
-        <Heading>Sign Up</Heading>
+        <Heading>Login</Heading>
         <Text>Please login with your email and password</Text>
       </VStack>
       <form onSubmit={handleSubmit(submit)}>
         <VStack spacing={4}>
-          <FormControl id="name" isRequired>
-            <FormLabel>Name</FormLabel>
-            <Input
-              placeholder="Enter your name"
-              {...register("name", {
-                required: "Name is required",
-              })}
-              variant="filled"
-              type="text"
-            />
-            <Text color="red.400" fontSize=".9rem">
-              {errors.name && errors.name.message}
-            </Text>
-          </FormControl>
           <FormControl id="email" isRequired>
             <FormLabel>Email</FormLabel>
             <Input
@@ -90,10 +80,10 @@ export default function SignIn() {
               {errors.password && errors.password.message}
             </Text>
           </FormControl>
-          <HStack w="full" align="center" my="2" gap={1} justify={"flex-start"}>
-            <Text>Already have an account ?</Text>
-            <Button as={Link} to="/login" variant="link" colorScheme="blue">
-              Login
+          <HStack w="full" my="2" justify={"space-between"}>
+            <Checkbox>Remember me</Checkbox>
+            <Button as="a" variant="link" colorScheme="blue">
+              Forgot Password?
             </Button>
           </HStack>
           <Button
@@ -102,7 +92,10 @@ export default function SignIn() {
             w="full"
             colorScheme="blue"
           >
-            Sign Up
+            Login
+          </Button>
+          <Button as={Link} to="/signin" w="full" colorScheme="green">
+            Create an account
           </Button>
         </VStack>
       </form>

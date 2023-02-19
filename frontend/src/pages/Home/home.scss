@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+.landing_page {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("/images/landing-image.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    span {
+        color : #725a7a
+    }
+    .heading {
+        font-size: 2.8rem;
+    }
+
+}
