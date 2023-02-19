@@ -12,10 +12,16 @@ const port = process.env.PORT || 3500;
 
 const authRoute = require("./routes/auth.route");
 const contentRoute=require("./routes/content.route");
+const suggestionRoute=require('./routes/suggestion.routes');
+const analysisRoute=require('./routes/analysis.routes');
+const fakeAIRoute=require('./routes/fakeAI.routes')
 const userRoute=require('./routes/user.routes')
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/content", contentRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/suggestion", suggestionRoute);
+app.use("/api/v1/analysis", analysisRoute);
+app.use("/api/v1/fake", fakeAIRoute);
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const notFound = require("./errors/not-found");
 app.use(cookieParser());

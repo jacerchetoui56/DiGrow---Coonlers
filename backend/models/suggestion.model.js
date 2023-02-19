@@ -1,22 +1,13 @@
 const mongoose = require('mongoose');
-const contentSchema = new mongoose.Schema({
+const suggestionSchema = new mongoose.Schema({
 
-  discription: String,
-  analysis:{
-     type:String
-  },
-  suggestion:{
-        type:String
-  },
-  content:{
-    type:mongoose.Schema.ObjectId,
-    ref:'Content',
-  },
+  keywords:[String],
+
   createdAt: {
     type: Date,
     default: Date.now()
   }
 });
-const Content = mongoose.model('Analysis', contentSchema);
+const Suggestion = mongoose.model('Suggestion', suggestionSchema);
 
-module.exports = Content;
+module.exports = Suggestion;
