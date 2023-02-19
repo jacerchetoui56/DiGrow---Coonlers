@@ -8,9 +8,9 @@ const contentSchema = new mongoose.Schema({
   suggestion:{
         type:String
   },
-  user:{
+  content:{
     type:mongoose.Schema.ObjectId,
-    ref:'User',
+    ref:'Content',
   },
   createdAt: {
     type: Date,
