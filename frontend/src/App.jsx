@@ -25,7 +25,7 @@ function App() {
 
   // !--------- using useRoutes hook -------------
   // * defining the lazy load components
-  const Dashboard = lazy(() => import("./pages/Dashboard"));
+  const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
   const Login = lazy(() => import("./pages/Login/Login"));
   const SignUp = lazy(() => import("./pages/Signup/SignUp"));
   const NotFound = lazy(() => import("./pages/NotFound"));

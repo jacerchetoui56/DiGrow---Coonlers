@@ -13,7 +13,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCustomToast } from "../../hooks/useCustomToast";
 import { BiFootball } from "react-icons/bi";
-import { GrTechnology } from "react-icons/gr";
 import { BsMusicNote } from "react-icons/bs";
 import { SlGameController } from "react-icons/sl";
 import { MdShoppingBasket } from "react-icons/md";
@@ -44,7 +43,7 @@ export default function Interets() {
       setLoading(false);
       navigate("/dashboard");
       openCustomToast("Welcome to DiGrow", "success");
-    }, 2000);
+    }, 2500);
   };
 
   return (

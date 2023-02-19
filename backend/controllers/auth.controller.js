@@ -1,6 +1,6 @@
 const User = require("../models/user.model");
 const { StatusCodes } = require("http-status-codes");
-const {promisify}=require('util')
+const { promisify } = require("util");
 const { BadRequestError, UnauthorizedError } = require("../errors");
 const userModel = require("../models/user.model");
 const login = async (req, res) => {
@@ -17,17 +17,18 @@ const login = async (req, res) => {
     throw new UnauthorizedError("Invalid credentials.");
   }
   const accessToken = userModel.generateAccessToken(userExists._id);
-  const cookieOptions={
-    expires:new Date( Date.now()+20*24*60*60*1000),
+  const cookieOptions = {
+    expires: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
     //secure:true,
-    httpOnly:true
-}
-   res.cookie('jwt',accessToken,cookieOptions);
+    httpOnly: true,
+  };
+  res.cookie("jwt", accessToken, cookieOptions);
   res.status(StatusCodes.CREATED).json({
     success: true,
     user: {
       _id: userExists._id,
       name: userExists.name,
+      email: userExists.email,
     },
     accessToken,
   });
@@ -49,14 +50,13 @@ const register = async (req, res) => {
     user: {
       _id: user._id,
       name: user.name,
+      email: user.email,
     },
     accessToken,
   });
 };
 
-
 module.exports = {
   login,
   register,
-  protect
 };

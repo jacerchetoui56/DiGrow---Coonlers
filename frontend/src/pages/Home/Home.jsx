@@ -1,5 +1,6 @@
 import {
   Avatar,
+  AvatarGroup,
   Box,
   Button,
   Container,
@@ -54,7 +55,7 @@ export default function Home() {
           borderRadius="3xl"
           px={8}
         >
-          Join for free
+          Login
         </Button>
       </Flex>
       <VStack
@@ -90,7 +91,7 @@ export default function Home() {
           px={8}
           borderRadius="3xl"
         >
-          <HStack as={Link} to="/login">
+          <HStack as={Link} to="/signup">
             <Text fontSize="xl" letterSpacing={1}>
               TRY DiGrow
             </Text>
@@ -99,19 +100,13 @@ export default function Home() {
         </Button>
         <HStack>
           <HStack>
-            {[1, 2, 3, 4].map((user, index) => {
-              return (
-                <Avatar
-                  size="md"
-                  top="0"
-                  position="relative"
-                  key={user}
-                  right={`${index * 28}px`}
-                />
-              );
-            })}
+            <AvatarGroup size="md" max={3}>
+              <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+              <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+              <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
+            </AvatarGroup>
           </HStack>
-          <Text fontWeight="medium" position="relative" left="-75px">
+          <Text fontWeight="medium">
             And Other 1.5 Million Content Creators Have Already Joined
           </Text>
         </HStack>
