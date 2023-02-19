@@ -10,16 +10,12 @@ app.use(cors());
 const port = process.env.PORT || 3500;
 
 const authRoute = require("./routes/auth.route");
-<<<<<<< HEAD
 const contentRoute = require("./routes/content.route");
 const userRoute = require("./routes/user.routes");
-=======
-const contentRoute=require("./routes/content.route");
-const suggestionRoute=require('./routes/suggestion.routes');
-const analysisRoute=require('./routes/analysis.routes');
-const fakeAIRoute=require('./routes/fakeAI.routes')
-const userRoute=require('./routes/user.routes')
->>>>>>> c35fd033a8a07de94636fca72d48fe4fd5bc26f1
+const suggestionRoute = require("./routes/suggestion.routes");
+const analysisRoute = require("./routes/analysis.routes");
+const fakeAIRoute = require("./routes/fakeAI.routes");
+
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/content", contentRoute);
 app.use("/api/v1/user", userRoute);

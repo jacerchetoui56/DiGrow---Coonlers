@@ -24,6 +24,7 @@ import { MdSupportAgent } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { IoNotifications } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
 export default function Dashboard() {
   const { logout } = useAuth();
@@ -40,10 +41,10 @@ export default function Dashboard() {
           <Text>{user.email || "example@gmail.com"}</Text>
         </div>
         <div className="links">
-          <div className="link">
+          <NavLink to="/dashboard" className="link">
             <RxDashboard />
             <Text marginLeft={4}>Dashboard</Text>
-          </div>
+          </NavLink>
           <div className="link">
             <IoStatsChartOutline />
             <Text marginLeft={4}>Statistics</Text>
