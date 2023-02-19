@@ -1,6 +1,6 @@
 import { Avatar, Button, Flex, HStack, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Header() {
   const { logout, user } = useAuth();

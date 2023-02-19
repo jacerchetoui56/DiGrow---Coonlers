@@ -14,10 +14,10 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/authContext";
 import "./signup.scss";
 import { useState } from "react";
 import { useCustomToast } from "../../hooks/useCustomToast";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function SignIn() {
   const { register: signUp } = useAuth();

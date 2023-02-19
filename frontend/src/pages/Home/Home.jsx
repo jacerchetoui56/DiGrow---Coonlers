@@ -17,10 +17,8 @@ import { RiExternalLinkLine } from "react-icons/ri";
 export default function Home() {
   return (
     <Container color="white" className="landing_page" minH="100vh" maxW="full">
-      <Flex justify="space-between" w="full" px={16} py={4}>
-        <Heading fontSize="3xl">
-          <Image src="/images/logo.png" alt="logo" w="150px" />
-        </Heading>
+      <Flex align="center" justify="space-between" w="full" px={16} py={4}>
+        <Image src="/images/logo.png" alt="logo" w="150px" />
         <HStack spacing={10}>
           <Button
             _hover={{ bgColor: "transparent" }}

@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import Loading from "./components/Loading";
 import MainLayout from "./components/MainLayout";
-import { useAuth } from "./context/authContext";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
   const { pathname } = useLocation();
@@ -12,7 +12,7 @@ function App() {
     const url = pathname.split("?")[0];
     const publicPaths = ["/login", "/signup", "/"];
     if (!user && !isAuthenticated && !publicPaths.includes(url)) {
-      navigate("/login");
+      navigate("/");
     } else if (!user && !isAuthenticated && publicPaths.includes(url)) {
       // navigate(url);
     } else if (user && isAuthenticated && url === "/login") {
@@ -29,7 +29,7 @@ function App() {
   const Login = lazy(() => import("./pages/Login/Login"));
   const SignUp = lazy(() => import("./pages/Signup/SignUp"));
   const NotFound = lazy(() => import("./pages/NotFound"));
-  const Interets = lazy(() => import("./pages/Interets"));
+  const Interets = lazy(() => import("./pages/interests/Interets"));
   const Home = lazy(() => import("./pages/Home/Home"));
 
   const routes = useRoutes([
