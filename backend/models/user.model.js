@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "please provide a password"],
   },
+  interests:[String]
 });
 
 userSchema.pre("save", async function () {
