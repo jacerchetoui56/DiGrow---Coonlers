@@ -10,8 +10,9 @@ app.use(cors());
 const port = process.env.PORT || 3500;
 
 const authRoute = require("./routes/auth.route");
-
+const contentRoute=require("./routes/content.route")
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/content", contentRoute);
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const notFound = require("./errors/not-found");
 
