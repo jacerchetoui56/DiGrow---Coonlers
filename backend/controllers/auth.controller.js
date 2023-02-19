@@ -58,5 +58,9 @@ const register = async (req, res) => {
 
 module.exports = {
   login,
+<<<<<<< HEAD
   register,
+=======
+  register
+>>>>>>> c35fd033a8a07de94636fca72d48fe4fd5bc26f1
 };

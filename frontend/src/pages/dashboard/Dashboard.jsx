@@ -8,6 +8,8 @@ import {
   Text,
   Button,
   Textarea,
+  Flex,
+  InputRightElement,
 } from "@chakra-ui/react";
 import React from "react";
 import { BiSearch } from "react-icons/bi";
@@ -20,6 +22,8 @@ import { BiBookAlt } from "react-icons/bi";
 import { AiOutlineHistory } from "react-icons/ai";
 import { MdSupportAgent } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
+import { BsSearch } from "react-icons/bs";
+import { IoNotifications } from "react-icons/io5";
 
 export default function Dashboard() {
   const { logout } = useAuth();
@@ -67,9 +71,31 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="right">
-        <Heading fontSize="3xl" fontWeight="semibold" alignSelf="start" p={4}>
-          Dashboard
-        </Heading>
+        <Flex w="full" justify="space-between" align="center">
+          <Heading fontSize="3xl" fontWeight="semibold" alignSelf="start" p={4}>
+            Dashboard
+          </Heading>
+          <Box display="flex" gap={4} alignItems={"center"} p={2}>
+            <InputGroup w="100px">
+              <Input
+                focusBorderColor="#355C7D"
+                bgColor={"#355C7D"}
+                color={"white"}
+                placeholder="Search "
+                _placeholder={{
+                  opacity: 1,
+                  color: "#d6d6d6",
+                  fontFamily: "Montserrat",
+                }}
+                fontSize={".8rem"}
+              />
+              <InputRightElement
+                children={<BsSearch fontSize="1rem" color="white" />}
+              />
+            </InputGroup>
+            <IoNotifications fontSize="1.5rem" color="#355C7D" />
+          </Box>
+        </Flex>
 
         <Heading fontSize="xl" fontWeight="semibold" textAlign="center">
           What Are You Looking For ?

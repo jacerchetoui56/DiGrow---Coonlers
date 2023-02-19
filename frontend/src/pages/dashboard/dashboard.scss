@@ -63,8 +63,14 @@
 
         .trends{
             margin-top: 2rem;
-            border-top: 1px solid #d7d7d7;
+            border-top: solid 1px #bdbdbd;
             padding-top: 1rem;
+
+            span {
+                text-decoration: underline;
+                color: #355C7D;
+                cursor: pointer;
+            }
         }
     }
 }

@@ -1,6 +1,11 @@
-const express = require("express");
+const express=require('express');
+const router=express.Router({mergeParams:true});
+const analysisCtr=require('../controllers/analysis.controller')
+router.route('/')
+.get( analysisCtr.getAllAnalysis)
+.post(analysisCtr.createAnalysis)
+      .get(analysisCtr.getOneAnalysis)
+      .delete(analysisCtr.deleteAnalysis)
+      .patch(analysisCtr.updateAnalysis);
 
-const router = express.Router({mergeParams:true});
-const analysisRouter=require('./analysis.routes');
-router.use('/analysis',analysisRouter);
-module.exports = router;
+module.exports=router;
