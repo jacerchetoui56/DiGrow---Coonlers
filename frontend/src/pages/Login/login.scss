@@ -6,6 +6,10 @@
     height: 100vh;
     display: flex;
     .left {
+        @media (max-width: 768px) {
+            display: none;
+
+        }
         font-family: 'Montserrat', sans-serif;
         color: white;
         padding: 1.25rem 0 2.5rem 1.25rem;
@@ -33,7 +37,13 @@
        border-bottom-left-radius : 45px;
        display: flex;
        justify-content: center;
-         align-items: center;
+       align-items: center;
+       @media (max-width: 768px) {
+             border-top-left-radius : 0;
+             border-bottom-left-radius : 0;
+            
+            
+        }
     }
 
     .brain {

@@ -20,7 +20,7 @@ export default function Home() {
     <Container color="white" className="landing_page" minH="100vh" maxW="full">
       <Flex align="center" justify="space-between" w="full" px={16} py={4}>
         <Image src="/images/logo.png" alt="logo" w="150px" />
-        <HStack spacing={10}>
+        <HStack display={{ base: "none", md: "flex" }} spacing={10}>
           <Button
             _hover={{ bgColor: "transparent" }}
             variant="ghost"
