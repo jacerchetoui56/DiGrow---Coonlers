@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import Loading from "./components/Loading";
 import MainLayout from "./components/MainLayout";
-import { useAuth } from "./context/authContext";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
   const { pathname } = useLocation();
@@ -10,13 +10,15 @@ function App() {
   const navigate = useNavigate();
   useEffect(() => {
     const url = pathname.split("?")[0];
-    const publicPaths = ["/login", "/signin"];
+    const publicPaths = ["/login", "/signup", "/"];
     if (!user && !isAuthenticated && !publicPaths.includes(url)) {
-      navigate("/login");
+      navigate("/");
     } else if (!user && !isAuthenticated && publicPaths.includes(url)) {
-      navigate(url);
-    } else if ((isAuthenticated && publicPaths.includes(url)) || url === "/") {
+      // navigate(url);
+    } else if (user && isAuthenticated && url === "/login") {
       navigate("/dashboard");
+    } else if (user && isAuthenticated && url === "/signup") {
+      navigate("/interests");
     }
     //eslint-disable-next-line
   }, [pathname, user, isAuthenticated]);
@@ -24,9 +26,11 @@ function App() {
   // !--------- using useRoutes hook -------------
   // * defining the lazy load components
   const Dashboard = lazy(() => import("./pages/Dashboard"));
-  const Login = lazy(() => import("./pages/Login"));
-  const SingIn = lazy(() => import("./pages/Signin"));
+  const Login = lazy(() => import("./pages/Login/Login"));
+  const SignUp = lazy(() => import("./pages/Signup/SignUp"));
   const NotFound = lazy(() => import("./pages/NotFound"));
+  const Interets = lazy(() => import("./pages/interests/Interets"));
+  const Home = lazy(() => import("./pages/Home/Home"));
 
   const routes = useRoutes([
     {
@@ -43,11 +47,19 @@ function App() {
     },
     {
       path: "/",
-      element: <Login />,
+      element: <Home />,
     },
     {
-      path: "/signin",
-      element: <SingIn />,
+      path: "/signup",
+      element: <SignUp />,
+    },
+    {
+      path: "/interests",
+      element: (
+        <MainLayout>
+          <Interets />
+        </MainLayout>
+      ),
     },
     {
       path: "*",

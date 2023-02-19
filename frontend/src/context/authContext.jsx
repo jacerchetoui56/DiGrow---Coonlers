@@ -13,7 +13,7 @@ const initialAuthState = {
   isAuthenticated: false,
   user: null,
 };
-const authContext = React.createContext({ ...initialAuthState });
+export const authContext = React.createContext({ ...initialAuthState });
 
 //! -- set the session --
 const setSession = (accessToken, user) => {
@@ -135,4 +135,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-export const useAuth = () => useContext(authContext);
